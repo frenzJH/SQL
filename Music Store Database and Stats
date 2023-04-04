@@ -1,0 +1,30 @@
+--Create my own store database, and have at least 15 items and 5 columns for each.
+CREATE TABLE music_store (id INTEGER PRIMARY KEY, item TEXT, item_type TEXT, price INTEGER, brand TEXT, quantity INTEGER, color TEXT, condition TEXT);
+
+INSERT INTO music_store VALUES
+
+(1, 'Stratocaster', 'Electric guitar', 1600, 'Fender', 2, 'White', 'Used'),
+(2, 'Telecaster', 'Electric guitar', 2000, 'Fender', 3, 'Sunburst', 'New'),
+(3, 'GS Mini', 'Acoustic guitar', 1000, 'Taylor', 2, 'Beige', 'New'),
+(4, 'GPC-16E', 'Acoustic guitar', 2000, 'Martin', 3, 'Rosewood', 'New'),
+(5, 'Bass Workshop', 'Bass guitar', 1000, 'Ibanez', 1, 'Seafoam Green', 'Used'),
+(6, 'Gio', 'Bass guitar', 200, 'Ibanez', 2, 'Brown', 'Used'),
+(7, 'Snare drum', 'Percussion', 300, 'Tama', 2, 'Blue', 'New'),
+(8, 'Kick drum', 'Percussion', 450, 'Tama', 1, 'Blue', 'New'),
+(9, 'Hi-Hat Cymbals', 'Percussion', 180, 'Zildjan', 1, 'Bronze', 'Used'),
+(10, 'Crash Cymbals', 'Percussion', 220, 'Paiste', 2, 'Bronze', 'New'),
+(11, 'Floor Tom', 'Percussion', 150, 'Pearl', 2, 'Black', 'Used'),
+(12, 'High Tom', 'Percussion', 110, 'Pearl', 1, 'Black', 'Used'),
+(13, 'Low Tom', 'Percussion', 100, 'Pearl', 1, 'Black', 'Used'),
+(14, 'Electric Rhodes', 'Electric piano',  2000, 'Fender',
+1, 'Black', 'Used'),
+(15, 'Stage Keyboard', 'Digital keyboard', 4000, 'Nord', 1, 'Red', 'New');
+
+--Show results for all items ordered by price.
+SELECT * from music_store ORDER BY price desc;
+
+--Show results for all items that have quantity greater than 2
+SELECT * from music_store where quantity >= 2 ORDER BY price asc;
+
+--Show results for items that are percussion instruments and have a price of at least 150 or greater.
+SELECT * from music_store WHERE item_type = 'Percussion' and price >= 150;
