@@ -23,8 +23,11 @@ INSERT INTO music_store VALUES
 --Show results for all items ordered by price.
 SELECT * from music_store ORDER BY price desc;
 
---Show results for all items that have quantity greater than 2
+--Show results for all items that have quantity greater than 2.
 SELECT * from music_store where quantity >= 2 ORDER BY price asc;
 
 --Show results for items that are percussion instruments and have a price of at least 150 or greater.
 SELECT * from music_store WHERE item_type = 'Percussion' and price >= 150;
+
+--Calculate and show average pricing for all items in the store .
+SELECT avg(price) FROM music_store;
