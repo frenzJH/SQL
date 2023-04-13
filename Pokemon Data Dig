@@ -1,10 +1,14 @@
-/* Put your data in here and query it! */
-/*Questions to ask about Pokemon data: 
-1. How many pokemon have more than one type or one type only?
-2. Which pokemon(s) has the highest, and lowest overall stat total?
-3. Which generation has the most pokemon?
-4. which generation has the strongest legendary pokemon?
-5. What are the tiers of the pokemon based on overall stat total? */
+/* In this project, I chose to use the Pokemon data set that was curated among a few other data sets.  
+/*These are the questions I asked to get out of the Pokemon data: 
+ - Which pokemon have one type only and is an electric type? 
+ - Which pokemon have attack greater than 300 or defense greater than 80? 
+ - Which generations have a total number of pokemon that is at least 150 or greater? 
+ - How many legendary pokemon are in each generation? 
+ - Which pokemon has the highest total stat for each generation? 
+ - Which pokemon has the lowest total stat for each generation? 
+ - What is the average total stat in the table? 
+ - What are the tiers of the pokemon based on overall stat total? */
+
 
 CREATE TABLE pokemon(
   Number     INTEGER,
@@ -822,37 +826,45 @@ INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (720,'HoopaHoopa Unbound','Psychic','Dark',680,80,160,60,170,130,80,6,'True');
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (721,'Volcanion','Fire','Water',600,80,110,120,130,90,70,6,'True');
 
-/*Questions to ask about Pokemon data: 
-- Which pokemon have one type only and is an electric type?
-- Which pokemon have attack greater than 300 or defense greater than 80?
-- Which pokemon has the highest total stat?
-- Which pokemon has the lowest total stat?
-- What is the average total stat in the table?
-- What are the tiers of the pokemon based on overall stat total? */
 
+/* Which pokemon have one type only and is an electric type? */
 SELECT Name, Type_1, Type_2 
 FROM pokemon 
 WHERE Type_1 = 'Electric' AND Type_2 IS NULL;
 
+/* Which pokemon have attack greater than 300 or defense greater than 80? */
 SELECT Name, Attack, Defense 
 FROM pokemon 
 WHERE Attack >= 300 OR Defense >= 80 
 LIMIT 25;
 
+/* Which generations have a total number of pokemon that is at least 150 or greater? */
 SELECT Generation, COUNT(*) 
 FROM pokemon 
 GROUP BY Generation 
-Having COUNT(*) >= 160;
+Having COUNT(*) >= 150;
 
-SELECT Name, MAX(Total) 
-FROM pokemon;
+/* How many legendary pokemon are in each generation? */
+SELECT Generation, COUNT(*) 
+FROM pokemon 
+WHERE Legendary = 'True'
+GROUP BY Generation;
 
+/* Which pokemon has the highest total stat for each generation? */
+SELECT Name, MAX(Total), Generation
+FROM pokemon
+WHERE Generation IN (1, 2, 3, 4, 5, 6)
+GROUP BY Generation;
+
+/* Which pokemon has the lowest total stat for each generation? */
 SELECT Name, MIN(Total) 
 FROM pokemon;
 
+/* What is the average total stat in the table? */
 SELECT AVG(Total) 
 FROM pokemon;
 
+/* What are the tiers of the pokemon based on overall stat total? */
 SELECT Name, Total,
     CASE
         WHEN Total > 600 THEN 'A'
