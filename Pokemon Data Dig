@@ -828,43 +828,52 @@ INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_
 
 
 /* Which pokemon have one type only and is an electric type? */
+/* I used the AND operator to combine and find Type_1 and Type_2 values. */
 SELECT Name, Type_1, Type_2 
 FROM pokemon 
 WHERE Type_1 = 'Electric' AND Type_2 IS NULL;
 
 /* Which pokemon have attack greater than 300 or defense greater than 80? */
+/* I used the OR operator to find either of the two conditional values. */
 SELECT Name, Attack, Defense 
 FROM pokemon 
 WHERE Attack >= 300 OR Defense >= 80 
 LIMIT 25;
 
 /* Which generations have a total number of pokemon that is at least 150 or greater? */
+/* I used COUNT(*) to find number of logs of pokemon and grouped by Generation. I used HAVING to show results for the groups greater than or at least 150. */
 SELECT Generation, COUNT(*) 
 FROM pokemon 
 GROUP BY Generation 
-Having COUNT(*) >= 150;
+HAVING COUNT(*) >= 150;
 
 /* How many legendary pokemon are in each generation? */
+/* I grouped by Generation and counted the logs for each generation where pokemon are legendaries. */
 SELECT Generation, COUNT(*) 
 FROM pokemon 
 WHERE Legendary = 'True'
 GROUP BY Generation;
 
 /* Which pokemon has the highest total stat for each generation? */
+/* Queried the Max of the total stat for each pokemon within each generation, and grouped by Generation. */
 SELECT Name, MAX(Total), Generation
 FROM pokemon
 WHERE Generation IN (1, 2, 3, 4, 5, 6)
 GROUP BY Generation;
 
 /* Which pokemon has the lowest total stat for each generation? */
-SELECT Name, MIN(Total) 
-FROM pokemon;
+/* Queried the MIN of the total stat for each pokemon within each generation, and grouped by Generation. */
+SELECT Name, MIN(Total), Generation
+FROM pokemon
+WHERE Generation IN (1, 2, 3, 4, 5, 6)
+GROUP BY Generation;
 
 /* What is the average total stat in the table? */
 SELECT AVG(Total) 
 FROM pokemon;
 
 /* What are the tiers of the pokemon based on overall stat total? */
+/* Created a new column to show tiers for pokemon based on their total stat value. */
 SELECT Name, Total,
     CASE
         WHEN Total > 600 THEN 'A'
