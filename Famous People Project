@@ -1,0 +1,480 @@
+/** 
+
+In this project, you’re going to make your own table with a set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
+
+For example, here are types of famous people and the questions your data could answer:
+
+Movie stars: What movies are they in? Are they married to each other?
+Singers: What songs did they write? Where are they from?
+Authors: What books did they write?
+Fictional characters: How are they related to other characters? What books do they show up in? 
+
+**/
+
+/* Create table about the people and what they do here */
+
+Create table celebs (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    first_name TEXT,
+                    last_name TEXT,
+                    occupation TEXT);
+                            
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Paul', 'Rudd', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Ryan', 'Reynolds', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Robert', 'Downey', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Jennifer', 'Lawrence', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Charlie', 'Puth', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Billie', 'Eilish', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Ed', 'Sheeran', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('John', 'Tolkien', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Lewis', 'Carroll', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Clive', 'Lewis', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Joanne', 'Rowling', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Daniel', 'Radcliffe', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Emma', 'Watson', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Robert', 'Pattinson', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Kristen', 'Stewart', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Tom', 'Holland', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Matthew', 'McConaughey', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Scarlet', 'Johannson', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Brie', 'Larson', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Elizabeth', 'Olsen', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Jake', 'Gyllenhaal', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Don', 'Cheadle', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Anne', 'Hathaway', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Gal', 'Gadot', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Ben', 'Afleck', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Dwayne', 'Johnson', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Chris', 'Pratt', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Bruno', 'Mars', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Shawn', 'Mendez', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Justin', 'Bieber', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Celine', 'Dion', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Stephen', 'King', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('George', 'Martin', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Chris', 'Hemsworth', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Christian', 'Bale', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Michael', 'Jackson', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Taylor', 'Swift', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Harry', 'Styles', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Camila', 'Cabello', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Nora', 'Roberts', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Ernest', 'Cline', 'Author');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Dave', 'Bautista', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Ezra', 'Miller', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Patrick', 'Stewart', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Chris', 'Pine', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Chris', 'Evans', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Zendaya', 'Coleman', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Olivia', 'Rodrigo', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Rihanna', 'Fenty', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Beyonce', 'Knowles', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Oscar', 'Isaac', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Mark', 'Ruffalo', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Chester', 'Bennington', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Adam', 'Levine', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Pharrell', 'Williams', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('John', 'Legend', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Adele', 'Adkins', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Tom', 'Hiddleston', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Benedict', 'Cumberbatch', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Ariana', 'Grande', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Zoe', 'Saldana', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Henry', 'Cavill', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Ian', 'McKellen', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Hugh', 'Jackman', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Halle', 'Berry', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Timothee', 'Chalamet', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Chris', 'Martin', 'Artist');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Leonardo', 'DiCaprio', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Margot', 'Robbie', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Jared', 'Leto', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Tom', 'Hardy', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Jason', 'Momoa', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Zachary', 'Levi', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Josh', 'Brolin', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('James', 'McAvoy', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Michael', 'Fassbender', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Toby', 'Maguire', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Willem', 'Dafoe', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Jonathan', 'Simmons', 'Actor');
+INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Andrew', 'Garfield', 'Actor');
+
+
+Create table movies (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT,
+                    release INTEGER);
+
+INSERT INTO movies (title, release) VALUES ('Avengers: Endgame', 2019);
+INSERT INTO movies (title, release) VALUES ('Man of Steel', 2013);
+INSERT INTO movies (title, release) VALUES ('Iron Man', 2008);
+INSERT INTO movies (title, release) VALUES ('Batman v Superman: Dawn of Justice', 2016);
+INSERT INTO movies (title, release) VALUES ('Justice League', 2017);
+INSERT INTO movies (title, release) VALUES ('The Dark Knight', 2008);
+INSERT INTO movies (title, release) VALUES ('Wonder Woman', 2017);
+INSERT INTO movies (title, release) VALUES ('Thor', 2011);
+INSERT INTO movies (title, release) VALUES ('Captain America: The First Avenger', 2011 );
+INSERT INTO movies (title, release) VALUES ('Aquaman', 2018);
+INSERT INTO movies (title, release) VALUES ('Suicide Squad', 2016);
+INSERT INTO movies (title, release) VALUES ('Shazam!', 2019);
+INSERT INTO movies (title, release) VALUES ('Black Adam', 2022);
+INSERT INTO movies (title, release) VALUES ('Guardians of the Galaxy', 2014);
+INSERT INTO movies (title, release) VALUES ('Avengers: Age of Ultron', 2015);
+INSERT INTO movies (title, release) VALUES ('Inception', 2010);
+INSERT INTO movies (title, release) VALUES ('Interstellar', 2014);
+INSERT INTO movies (title, release) VALUES ('The Wolf of Wall Street', 2013);
+INSERT INTO movies (title, release) VALUES ('X-Men', 2000);
+INSERT INTO movies (title, release) VALUES ('X-Men: First Class', 2011);
+INSERT INTO movies (title, release) VALUES ('X-Men: Days of Future Past', 2014);
+INSERT INTO movies (title, release) VALUES ('Deadpool', 2016);
+INSERT INTO movies (title, release) VALUES ('Deadpool 2', 2018);
+INSERT INTO movies (title, release) VALUES ('Doctor Strange', 2016);
+INSERT INTO movies (title, release) VALUES ('Black Panther', 2018);
+INSERT INTO movies (title, release) VALUES ('Avengers: Infinity War', 2018);
+INSERT INTO movies (title, release) VALUES ('Spider-Man: Homecoming', 2017);
+INSERT INTO movies (title, release) VALUES ('Spider-Man: Far From Home', 2019);
+INSERT INTO movies (title, release) VALUES ('Spider-Man: No Way Home', 2021);
+INSERT INTO movies (title, release) VALUES ('Twilight', 2008);
+INSERT INTO movies (title, release) VALUES ('Dune', 2021);
+INSERT INTO movies (title, release) VALUES ('The Batman', 2022);
+INSERT INTO movies (title, release) VALUES ('Doctor Strange: Multiverse of Madness', 2022);
+INSERT INTO movies (title, release) VALUES ('Sherlock Holmes', 2009);
+INSERT INTO movies (title, release) VALUES ('Star Trek', 2009);
+INSERT INTO movies (title, release) VALUES ('Star Trek: Into the Darkness', 2013);
+INSERT INTO movies (title, release) VALUES ('The Amazing Spider-Man', 2012);
+INSERT INTO movies (title, release) VALUES ('Spider-Man', 2002);
+INSERT INTO movies (title, release) VALUES ('Venom', 2018);
+INSERT INTO movies (title, release) VALUES ('Morbius', 2022);
+INSERT INTO movies (title, release) VALUES ("Harry Potter and the Sorcerer's Stone", 2001);
+INSERT INTO movies (title, release) VALUES ('Ant-Man', 2015);
+INSERT INTO movies (title, release) VALUES ('Green-Lantern', 2011);
+INSERT INTO movies (title, release) VALUES ('Avengers', 2012);
+INSERT INTO movies (title, release) VALUES ('Captain America: Civil War', 2016);
+INSERT INTO movies (title, release) VALUES ('The Hunger Games', 2012);
+INSERT INTO movies (title, release) VALUES ('The Amazing Spider-Man', 2012);
+INSERT INTO movies (title, release) VALUES ('Thor: Love and Thunder', 2022);
+INSERT INTO movies (title, release) VALUES ('Captain Marvel', 2019);
+
+Create table songs (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT,
+                    release INTEGER);
+  
+INSERT INTO songs (title, release) VALUES ('See You Again',2015 );
+INSERT INTO songs (title, release) VALUES ('Attention', 2017);
+INSERT INTO songs (title, release) VALUES ('Light Switch', 2022);
+INSERT INTO songs (title, release) VALUES ('Yellow', 2000);
+INSERT INTO songs (title, release) VALUES ('Viva La Vida', 2008);
+INSERT INTO songs (title, release) VALUES ('Thank U, Next', 2019);
+INSERT INTO songs (title, release) VALUES ('positions', 2020);
+INSERT INTO songs (title, release) VALUES ('bad guy', 2019);
+INSERT INTO songs (title, release) VALUES ('Ocean Eyes', 2016);
+INSERT INTO songs (title, release) VALUES ('Hello', 2015);
+INSERT INTO songs (title, release) VALUES ('Rolling in the Deep', 2011);
+INSERT INTO songs (title, release) VALUES ('Someone Like You', 2011);
+INSERT INTO songs (title, release) VALUES ('All of Me', 2013);
+INSERT INTO songs (title, release) VALUES ('Happy', 2014);
+INSERT INTO songs (title, release) VALUES ('Perfect', 2017);
+INSERT INTO songs (title, release) VALUES ('Thinking Out Loud', 2014);
+INSERT INTO songs (title, release) VALUES ('Just the Way You Are', 2010);
+INSERT INTO songs (title, release) VALUES ('Treasure', 2012);
+INSERT INTO songs (title, release) VALUES ("That's What I Like", 2016);
+INSERT INTO songs (title, release) VALUES ('Leave My Door Open', 2021);
+INSERT INTO songs (title, release) VALUES ('Sunday Morning', 2002);
+INSERT INTO songs (title, release) VALUES ('She Will Be Loved', 2002);
+INSERT INTO songs (title, release) VALUES ('Sugar', 2015);
+INSERT INTO songs (title, release) VALUES ("What I've Done", 2007);
+INSERT INTO songs (title, release) VALUES ('Numb', 2003);
+INSERT INTO songs (title, release) VALUES ('Halo', 2008);
+INSERT INTO songs (title, release) VALUES ('Single Ladies', 2008);
+INSERT INTO songs (title, release) VALUES ('Smooth Criminal', 1988);
+INSERT INTO songs (title, release) VALUES ('Billie Jean', 1982);
+INSERT INTO songs (title, release) VALUES ('Beat It', 1982);
+INSERT INTO songs (title, release) VALUES ('Love Story', 2008);
+INSERT INTO songs (title, release) VALUES ('I Knew You Were Trouble', 2012);
+INSERT INTO songs (title, release) VALUES ('You Belong With Me', 2008);
+INSERT INTO songs (title, release) VALUES ('Shake It Off', 2014);
+INSERT INTO songs (title, release) VALUES ('As It Was',2022 );
+INSERT INTO songs (title, release) VALUES ('Sign of the Times', 2017);
+INSERT INTO songs (title, release) VALUES ('Watermelon Sugar', 2019);
+INSERT INTO songs (title, release) VALUES ('All By Myself', 1996);
+INSERT INTO songs (title, release) VALUES ('My Heart Will Go On', 1997);
+INSERT INTO songs (title, release) VALUES ('Love Yourself', 2015);
+INSERT INTO songs (title, release) VALUES ('Peaches', 2021);
+INSERT INTO songs (title, release) VALUES ('Señorita', 2019);
+INSERT INTO songs (title, release) VALUES ('Stitches', 2015);
+INSERT INTO songs (title, release) VALUES ('Havana', 2018);
+INSERT INTO songs (title, release) VALUES ('Umbrella', 2007);
+INSERT INTO songs (title, release) VALUES ('Diamonds', 2012);
+INSERT INTO songs (title, release) VALUES ('good 4 u', 2021);
+INSERT INTO songs (title, release) VALUES ('drivers license', 2021);
+
+Create table books (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT,
+                    release INTEGER);
+
+INSERT INTO books (title, release) VALUES ('Ready Player One', 2011);
+INSERT INTO books (title, release) VALUES ('Vision in White', 2009);
+INSERT INTO books (title, release) VALUES ('A Game of Thrones', 1996);
+INSERT INTO books (title, release) VALUES ('The Lord of the Rings', 1954);
+INSERT INTO books (title, release) VALUES ('The Hobbit', 1937);
+INSERT INTO books (title, release) VALUES ('The Silmarillion', 1977);
+INSERT INTO books (title, release) VALUES ("Alice's Adventures in Wonderland", 1865);
+INSERT INTO books (title, release) VALUES ('The Lion, the Witch, and the Wardrobe', 1950);
+INSERT INTO books (title, release) VALUES ('Mere Christianity', 1952);
+INSERT INTO books (title, release) VALUES ('Out of the Silent Planet', 1938);
+INSERT INTO books (title, release) VALUES ("Harry Potter and the Sorcerer's Stone", 1997);
+INSERT INTO books (title, release) VALUES ('Fantastic Beasts and Where to Find Them', 2001);
+INSERT INTO books (title, release) VALUES ('It', 1986);
+INSERT INTO books (title, release) VALUES ('The Shining', 1977);
+
+
+Create table celeb_movie (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        celeb_id INTEGER,
+                        movie_id INTEGER);
+
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (1, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (1, 42);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (2, 22);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (2, 43);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 3);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 15);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 27);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 44);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 45);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (3, 34);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (4, 46);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (4, 20);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (4, 21);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (12, 41);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (13, 41);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (14, 30);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (14, 32);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (15, 30);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (16, 27);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (16, 28);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (16, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (16, 45);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (16, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (16, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (17, 18);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (17, 17);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (18, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (18, 15);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (18, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (18, 44);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (18, 45);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (19, 49);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (19, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (20, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (20, 15);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (20, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (20, 33);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (20, 45);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (21, 28);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (22, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (22, 15);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (22, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (22, 45);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (23, 6);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (24, 4);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (24, 5);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (24, 7);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (25, 4);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (25, 5);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (25, 11);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (26, 13);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (27, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (27, 14);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (27, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (27, 48);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (34, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (34, 8);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (34, 15);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (34, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (34, 44);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (34, 48);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (35, 6);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (35, 48);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (42, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (42, 14);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (42, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (42, 48);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (43, 4);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (43, 5);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (43, 11);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (44, 19);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (44, 21);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (44, 33);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (45, 7);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (45, 35);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (45, 36);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (46, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (46, 9);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (46, 15);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (46, 44);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (46, 45);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (46, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (47, 27);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (47, 28);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (47, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (47, 31);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (51, 31);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (52, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (52, 15);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (52, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (52, 44);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (58, 8);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (58, 44);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (59, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (59, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (59, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (59, 24);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (59, 33);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (59, 36);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (61, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (61, 14);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (61, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (61, 35);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (61, 36);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (62, 2);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (62, 4);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (62, 5);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (63, 19);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (63, 21);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (64, 19);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (64, 20);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (64, 21);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (65, 19);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (65, 21);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (66, 31);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (68, 16);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (68, 18);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (69, 11);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (69, 18);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (70, 11);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (70, 40);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (71, 16);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (71, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (71, 39);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (72, 5);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (72, 10);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (73, 12);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (74, 1);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (74, 26);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (75, 20);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (75, 21);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (76, 20);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (76, 21);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (77, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (77, 38);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (78, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (78, 38);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (79, 28);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (79, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (79, 38);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (80, 29);
+INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (80, 38);
+
+Create table celeb_song (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        celeb_id INTEGER,
+                        song_id INTEGER);
+
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (5, 1);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (5, 2);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (5, 3);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (6, 8);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (6, 9);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (7, 15);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (7, 16);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (28, 17);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (28, 18);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (28, 19);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (28, 20);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (29, 42);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (29, 43);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (30, 40);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (30, 41);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (31, 38);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (31, 39);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (36, 28);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (36, 29);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (36, 30);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (37, 31);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (37, 32);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (37, 33);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (37, 34);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (38, 35);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (38, 36);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (38, 37);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (39, 42);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (39, 44);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (48, 47);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (48, 48);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (49, 45);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (49, 46);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (50, 26);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (50, 27);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (53, 24);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (53, 25);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (54, 21);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (54, 22);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (54, 23);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (55, 14);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (56, 13);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (57, 10);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (57, 11);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (57, 12);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (60, 6);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (60, 7);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (67, 4);
+INSERT INTO celeb_song (celeb_id, song_id) VALUES (67, 5);
+
+
+Create table celeb_book (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        celeb_id INTEGER,
+                        book_id INTEGER);
+
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (8, 4);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (8, 5);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (8, 6);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (9, 7);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (10, 8);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (10, 9);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (10, 10);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (11, 11);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (11, 12);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (32, 13);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (32, 14);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (33, 3);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (40, 2);
+INSERT INTO celeb_book (celeb_id, book_id) VALUES (41, 1);
+
+/** query celebrities by occupation**/
+SELECT * FROM celebs WHERE occupation = 'Actor';
+SELECT * FROM celebs WHERE occupation = 'Artist';
+SELECT * FROM celebs WHERE occupation = 'Author';
+
+/** Find actors and the movies they were in by joining celebs table to celeb_movie table by celeb.id and joining movies table to celeb_movie by movie.id **/
+
+SELECT a.first_name, a.last_name, b.title as Movie FROM celeb_movie
+JOIN celebs a
+ON celeb_movie.celeb_id = a.id
+JOIN movies b
+ON celeb_movie.movie_id = b.id;
+
+/** Find artists and their songs by joining celebs table to celeb_song table by celeb.id and joining songs table to celeb_song by song.id **/
+
+SELECT a.first_name, a.last_name, b.title as Song FROM celeb_song
+JOIN celebs a
+ON celeb_song.celeb_id = a.id
+JOIN songs b
+ON celeb_song.song_id = b.id;
+
+/** Find authors and the books they wrote by joining celebs table to celeb_book table by celeb.id and joining books table to celeb_book by book.id **/
+
+SELECT a.first_name, a.last_name, b.title as Book FROM celeb_book
+JOIN celebs a
+ON celeb_book.celeb_id = a.id
+JOIN books b
+ON celeb_book.book_id = b.id;
