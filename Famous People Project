@@ -12,7 +12,6 @@ Fictional characters: How are they related to other characters? What books do th
 **/
 
 /* Create table about the people and what they do here */
-
 Create table celebs (id INTEGER PRIMARY KEY AUTOINCREMENT,
                     first_name TEXT,
                     last_name TEXT,
@@ -99,7 +98,7 @@ INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Willem', 'Dafoe'
 INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Jonathan', 'Simmons', 'Actor');
 INSERT INTO celebs (first_name, last_name, occupation) VALUES ('Andrew', 'Garfield', 'Actor');
 
-
+/** Create table for the movies corresponding to the respective famous person from the celebs table. **/
 Create table movies (id INTEGER PRIMARY KEY AUTOINCREMENT,
                     title TEXT,
                     release INTEGER);
@@ -154,6 +153,7 @@ INSERT INTO movies (title, release) VALUES ('The Amazing Spider-Man', 2012);
 INSERT INTO movies (title, release) VALUES ('Thor: Love and Thunder', 2022);
 INSERT INTO movies (title, release) VALUES ('Captain Marvel', 2019);
 
+/** Create table for songs corresponding to the respective person that wrote it from the celebs table. **/
 Create table songs (id INTEGER PRIMARY KEY AUTOINCREMENT,
                     title TEXT,
                     release INTEGER);
@@ -207,6 +207,7 @@ INSERT INTO songs (title, release) VALUES ('Diamonds', 2012);
 INSERT INTO songs (title, release) VALUES ('good 4 u', 2021);
 INSERT INTO songs (title, release) VALUES ('drivers license', 2021);
 
+/** Create table for books written by authors in the celebs table. **/
 Create table books (id INTEGER PRIMARY KEY AUTOINCREMENT,
                     title TEXT,
                     release INTEGER);
@@ -226,7 +227,7 @@ INSERT INTO books (title, release) VALUES ('Fantastic Beasts and Where to Find T
 INSERT INTO books (title, release) VALUES ('It', 1986);
 INSERT INTO books (title, release) VALUES ('The Shining', 1977);
 
-
+/** Create table for pairing of actor from celebs table with the movies they were in from movies table using primary keys from both tables. **/
 Create table celeb_movie (id INTEGER PRIMARY KEY AUTOINCREMENT,
                         celeb_id INTEGER,
                         movie_id INTEGER);
@@ -376,6 +377,7 @@ INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (79, 38);
 INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (80, 29);
 INSERT INTO celeb_movie (celeb_id, movie_id) VALUES (80, 38);
 
+/** Create table for pairing of artists from celebs table and the songs they created from songs table using primary keys from both tables. **/
 Create table celeb_song (id INTEGER PRIMARY KEY AUTOINCREMENT,
                         celeb_id INTEGER,
                         song_id INTEGER);
@@ -430,7 +432,7 @@ INSERT INTO celeb_song (celeb_id, song_id) VALUES (60, 7);
 INSERT INTO celeb_song (celeb_id, song_id) VALUES (67, 4);
 INSERT INTO celeb_song (celeb_id, song_id) VALUES (67, 5);
 
-
+/** Create table for pairing of authors from celebs table and the books they have written from books table using primary keys from both tables. **/
 Create table celeb_book (id INTEGER PRIMARY KEY AUTOINCREMENT,
                         celeb_id INTEGER,
                         book_id INTEGER);
@@ -455,24 +457,21 @@ SELECT * FROM celebs WHERE occupation = 'Actor';
 SELECT * FROM celebs WHERE occupation = 'Artist';
 SELECT * FROM celebs WHERE occupation = 'Author';
 
-/** Find actors and the movies they were in by joining celebs table to celeb_movie table by celeb.id and joining movies table to celeb_movie by movie.id **/
-
+/** Query actors and the movies they were in by joining celebs table to celeb_movie table by celeb.id and joining movies table to celeb_movie table by movie.id **/
 SELECT a.first_name, a.last_name, b.title as Movie FROM celeb_movie
 JOIN celebs a
 ON celeb_movie.celeb_id = a.id
 JOIN movies b
 ON celeb_movie.movie_id = b.id;
 
-/** Find artists and their songs by joining celebs table to celeb_song table by celeb.id and joining songs table to celeb_song by song.id **/
-
+/** Query artists and their songs by joining celebs table to celeb_song table by celeb.id and joining songs table to celeb_song table by song.id **/
 SELECT a.first_name, a.last_name, b.title as Song FROM celeb_song
 JOIN celebs a
 ON celeb_song.celeb_id = a.id
 JOIN songs b
 ON celeb_song.song_id = b.id;
 
-/** Find authors and the books they wrote by joining celebs table to celeb_book table by celeb.id and joining books table to celeb_book by book.id **/
-
+/** Query authors and the books they wrote by joining celebs table to celeb_book table by celeb.id and joining books table to celeb_book table by book.id **/
 SELECT a.first_name, a.last_name, b.title as Book FROM celeb_book
 JOIN celebs a
 ON celeb_book.celeb_id = a.id
