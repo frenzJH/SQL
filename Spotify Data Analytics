@@ -21,9 +21,8 @@
         time_signature integer NOT NULL )
 */
 /* After creating the table, I loaded the .csv file that contains the data for the Top 50 songs of 2021 from Kraggle into the table.
+/*Down below are the questions I came up with, and the insights I have gathered from the SQL queries.*/
 
-
-/*These are the questions I came up with, and the insights I have gathered from the SQL queries.*/
 /*What is the average song duration (in seconds) of the top 10 most popular songs? */
 SELECT AVG(duration_ms) * 0.001 as Seconds
 FROM (SELECT distinct duration_ms
