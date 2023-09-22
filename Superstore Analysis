@@ -1,4 +1,4 @@
-/* In this SQL project, I queried data from a table for a superstore. Here are the statistical queries I have made: */
+/* In this SQL project I did from the beginning of the course I am taking, I queried data from a table for a superstore. Here are the statistical queries I have made: */
 
 -- #1 Write your own SQL query that uses a SELECT statement to order the items by price.
 SELECT *
