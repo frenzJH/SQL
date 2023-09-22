@@ -1,0 +1,21 @@
+/* In this SQL project, I queried data from a table for a superstore. Here are the statistical queries I have made: */
+
+-- #1 Write your own SQL query that uses a SELECT statement to order the items by price.
+SELECT *
+FROM superstore
+ORDER BY price asc;
+
+-- #2 Write your own SQL query that will show a statistic about the item prices, like a sum, average, minimum, maximum, or count.
+SELECT AVG(price)
+FROM superstore
+ORDER BY price;
+
+--#3 Write your own SQL query that will show a statistic about the price for items in the category of "Kitchen Supplies". 
+SELECT MAX(price)
+FROM superstore
+WHERE category = "Kitchen Supplies";
+
+-- #4 How many purchases were made in the Electronics category?
+SELECT COUNT(*)
+FROM superstore
+WHERE category = "Electronics";
