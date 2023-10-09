@@ -1,30 +1,32 @@
---In this project, we are using the Postgre SQL dialect to query from a database that holds Netflix data and we are answering questions about its data.
+--In this project, I used the Postgre SQL dialect to query from a database that holds Netflix data.
+--Netflix database is stored at the link below:
+--http://sqlfiddle.com/#!17/7dae0/19112
 
 /*How many movie titles are there in the database? (movies only, not tv shows)*/
 SELECT COUNT(*)
-FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
+FROM "netflix_titles_info" 
 WHERE type = 'Movie';
 
 /*When was the most recent batch of tv shows and/or movies added to the database?*/
 SELECT max(date(date_added))
-FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+FROM "netflix_titles_info";
 
 /*List all the movies and tv shows in alphabetical order.*/
 SELECT title, type
-FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+FROM "netflix_titles_info" titles
 ORDER BY title ASC;
 
 /*Who was the Director for the movie Bright Star?*/
 SELECT people.director, titles.title
-FROM "CharlotteChaze/BreakIntoTech"."netflix_people" people
-JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+FROM "netflix_people" people
+JOIN "netflix_titles_info" titles
 ON people.show_id = titles.show_id
-WHERE titles.title = 'Bright Star' ;
+WHERE titles.title = 'The Starling';
 
 /*What is the oldest movie in the database and what year was it made?*/
 SELECT title, release_year
-FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+FROM "netflix_titles_info" titles
 WHERE type = 'Movie' 
 AND release_year =
-(SELECT MIN(release_year) FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+(SELECT MIN(release_year) FROM "netflix_titles_info"
 WHERE type = 'Movie');
