@@ -1,7 +1,13 @@
 --In this final SQL project, I worked with a dataset called chinook. It represents a digital media store and includes tables for artists, albums, media tracks, invoices, and customers.
+--This link will direct you to an image of all the tables, and each of their data in Chinook database diagram: https://postimg.cc/Ffth76bM
+
+
 -- Below are the following queries that I came up with that I thought would be interesting to look into from the data:
 
+
 -- 1. Show tracks in 2011 that was purchased more than once.
+-- The tracks, invoice_items, and invoices tables were joined for this query.
+
 SELECT  t.TrackId, t.Name
 FROM tracks t
 JOIN invoice_items i 
@@ -13,12 +19,16 @@ GROUP BY t.Name
 HAVING COUNT(i.InvoiceLineId) > 1;
 
 -- 2. To whom does each emploeyer report to?
+-- The employees table was joined with itself by referring the ReportsTo column to the EmployeeId column for this query.
+
 SELECT a.FirstName || ' ' || a.LastName as Full_Name, a.Title, b.FirstName || ' ' || b.LastName as Reports_To, b.Title as Title2
 FROM employees a
 JOIN employees b
 ON a.ReportsTo = b.EmployeeId;
 
 -- 3. Show the total number of items purchased. and total sales amount for all those items by each country in 2009.
+-- The invoice_items, invoices, and customers tables were joined for this query.
+
 SELECT c.Country, SUM(i.quantity) as total_Items, SUM(v.Total) as Total_Sales
 FROM invoice_items i
 JOIN invoices v
@@ -29,6 +39,8 @@ WHERE v.InvoiceDate LIKE '2009%'
 GROUP BY c.Country;
 
 -- 4. Which genre of music was the most purchased in 2012?
+-- The genres, tracks, invoice_items, and invoices tables were used, and joined to run this query.
+
 SELECT g.Name as Genre, SUM(i.Quantity) as Total_Purchases
 FROM genres g
 JOIN tracks t
@@ -43,6 +55,8 @@ ORDER BY Total_Purchases DESC
 LIMIT 1;
 
 -- 5. Show tracks that are in 10 playlists or greater.
+-- The tracks, playlist_track, and playlists tables were joined for this query.
+
 SELECT t.Name, COUNT(p.Name) as Total_Playlists
 FROM tracks t
 JOIN playlist_track l
@@ -54,6 +68,8 @@ HAVING COUNT(p.Name) > 9
 ORDER BY Total_Playlists DESC;
 
 -- 6. List each artist and provide the number of albums each artist has.
+-- The tables for artists, albums were joined together to run this query.
+
 SELECT a.Name as Artist_Name, COUNT(b.Title) as Albums
 FROM artists a
 JOIN albums b
@@ -62,6 +78,8 @@ GROUP BY Artist_Name
 ORDER BY Albums DESC;
 
 -- 7. What playlists are people consuming in USA?
+-- The playlists, playlist_track, tracks, invoice_items, invoices, and customers tables were joined for this query.
+
 SELECT p.Name as Playlist_Name
 FROM playlists p
 JOIN playlist_track l
@@ -78,11 +96,14 @@ WHERE c.Country = 'USA'
 GROUP BY p.Name;
 
 -- 8. Which employees are sales agents?
+
 SELECT FirstName || ' ' || LastName as Full_Name, Title
 FROM employees
 WHERE Title = 'Sales Support Agent';
 
 -- 9. List each sales agent with their total sales to see who made the most in 2011.
+-- The tables that were joined for this query are the employees, customers, invoices, and invoice_items. 
+
 SELECT e.FirstName || ' ' || e.LastName as Full_Name, ROUND(SUM(v.Total),2) as Total_Sales
 FROM employees e
 JOIN customers c
@@ -97,7 +118,9 @@ GROUP BY Full_Name
 ORDER BY Total_Sales DESC;
 
 -- 10. Which year had the most amount of invoice items sold? 
+--The tables for this query are the invoices, and invoice_items.
 -- Years 2012, 2011, 2010, and 2009 had the same amount of items sold.
+
 SELECT STRFTIME('%Y', v.InvoiceDate) as Invoice_Year, COUNT(i.InvoiceId) as Total_Items
 FROM invoices v
 JOIN invoice_items i
@@ -106,6 +129,8 @@ GROUP BY Invoice_Year
 ORDER BY Total_Items DESC;
 
 -- 11. Which year had the highest sales amount?
+--Used STRFTIME function to only get the year from the DATETIME integer type from the InvoiceDate column.
+
 SELECT STRFTIME('%Y', InvoiceDate) as Invoice_Year, ROUND(SUM(Total),2) as Total_Sales
 FROM invoices
 GROUP BY Invoice_Year
@@ -113,6 +138,8 @@ ORDER By Total_Sales DESC
 LIMIT 1;
 
 -- 12. Show customers with their first/last name by country, and their customer support representative's name.
+--This query has the tables customers, and employees joined.
+
 SELECT DISTINCT c.FirstName || ' ' || c.LastName as Customer_Name, e.FirstName || ' ' || e.LastName as Support_Rep_Name, c.Country
 FROM customers c
 JOIN employees e
@@ -120,6 +147,8 @@ ON c.SupportRepId = e.EmployeeId
 ORDER BY c.Country ASC;
 
 -- 13. Which artist sold the most albums in 2013 and what was the total sales with all those albums that year?
+-- The artists, albums, tracks, invoice_items, and invoices tables were joined together for this query.
+
 SELECT a.Name as Artist_Name, COUNT(b.AlbumId) as Total_Albums, ROUND(SUM(v.Total),2) as Total_Sales
 FROM artists a
 JOIN albums b
@@ -136,6 +165,8 @@ ORDER BY Total_Sales DESC
 LIMIT 1;
 
 -- 14. What is the average byte size and average millisecond for each media_type?
+-- The media_types, and tracks tables were joined to run this query. 
+
 SELECT m.Name as Media_Type, ROUND(AVG(t.Bytes),2) AS Avg_Bytes, ROUND(AVG(t.Milliseconds),2) AS Avg_Milliseconds
 FROM media_types m
 JOIN tracks t
